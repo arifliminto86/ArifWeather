@@ -1,0 +1,97 @@
+﻿@using ArifWeather.Helper
+@model ArifWeather.Models.TemperatureSearch
+
+<script type="text/javascript">
+    var _temperatureSearch = new TemperatureSearch();
+    $(document).ready(function () {
+        $("#SearchResult").hide();
+    });
+       
+</script>
+
+
+<div class="form-horizontal">
+     
+    <div class="form-group">
+        <label for="keyword" class="control-label col-md-2">Key Word : </label>
+        <div class="col-md-5">
+            @Html.TextBox("Keyword", Model.KeyWord, new { @class = "form-control", })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="RegionList" class="control-label col-md-2">Region</label>
+        <div class="col-md-5">
+
+            @Html.DropDownList("RegionsList", (IEnumerable<SelectListItem>)ViewBag.RegionViewBags,
+        new { @class = "form-control", @onchange = "_temperatureSearch.GetCountries(this.value)" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CountryList" class="control-label col-md-2">Country</label>
+        <div class="col-md-5">
+            @Html.DropDownList("CountryList", new List<SelectListItem>(), new { @class = "form-control"
+            , @onchange = "_temperatureSearch.GetCities(this.value)"
+       })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="City" class="control-label col-md-2">City  </label>
+        <div class="col-md-5">
+            @Html.DropDownList("CityList", new List<SelectListItem>(), new { @class = "form-control" })                
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" value="Search" class="btn btn-danger" onclick="_temperatureSearch.Search()" />
+        </div>
+    </div>
+</div>
+
+<div id="SearchResult">
+       
+    <div class="panel panel-danger">
+        <div class="panel-heading" style="font-weight:bold">Summary</div>
+        <div class="panel-body">
+            
+            <div>
+                <div class="col-md-2"><label for="EffectiveDateResult">Date:</label></div>
+                <div class="col-md-10"><div id="EffectiveDateResult"></div></div>
+            </div>
+            <div class="row"></div>
+
+            <div>
+                <div class="col-md-2"><label for="SummaryResult">Summary:</label></div>
+                <div class="col-md-10"><div id="SummaryResult"></div><img id="SeverityImage" class="img-responsive" alt="Weather" /></div>                
+            </div>
+            <div class="row"></div>
+            
+            <div>
+                <div class="col-md-3">
+                    <label for="DailyForecastTemperatureMin">Temperature Min: </label>
+                    <div id="DailyForecastTemperatureMin"></div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="DailyForecastTemperatureMax">Temperature Max: </label>
+                    <div id="DailyForecastTemperatureMax"></div>
+                </div>
+            </div>              
+            <div class="row"></div>
+
+
+        </div>
+
+    </div>
+
+</div>
+    
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+ 
+}
