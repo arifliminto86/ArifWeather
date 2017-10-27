@@ -1,0 +1,9 @@
+﻿@model ArifWeather.Models.CurrentInfo
+<h5>
+    <span class="d-inline-block text-right">
+        <strong>@Model.CurrentDateTime.ToShortDateString() @Model.CurrentLocation </strong>
+        <strong>@Model.CurrentTemperature celcius</strong>
+        <img src="@Model.CurrentWeatherIconUrl" class="img-circle"/>
+    </span>
+</h5>
+

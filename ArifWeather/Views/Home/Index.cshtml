@@ -1,0 +1,37 @@
+﻿@using ArifWeather.Models;
+@model ArifWeather.Models.HomePage
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-4">
+        <h5>            
+                Environment:
+                @{
+                    if (Model.CurrentUser.IsMock)
+                    {
+                        <strong> Mock Data</strong>
+                    }
+                    else
+                    {
+                        <strong> Real Data</strong>
+                    }
+                }                                    
+        </h5>
+        <div class="row"></div>
+        Version: <strong>@Model.CurrentUser.Version</strong>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    @Html.Partial("CurrentInfo", Model.CurrentWeatherInfo)        
+    </div>
+</div>
+
+<hr />
+@Html.Partial("TemperatureSearch",Model.TemperatureSearch)
+
+
+

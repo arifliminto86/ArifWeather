@@ -1,0 +1,5 @@
+.axoCover/runs/run_2017-10-03_10-45-09/coverageReport.xml
+*.nupkg
+*.ps1
+*.targets
+*.xdt
