@@ -52,9 +52,9 @@ namespace ArifWeather.Manager
             return _locationService.GetCountries(regionCode);
         }
 
-        public TemperatureSearchResult GetForecastApi(string locationKey)
+        public async Task<TemperatureSearchResult> GetForecastApi(string locationKey)
         {
-            return _weatherService.GetForecastApi(locationKey);
+            return await _weatherService.GetForecastApiAsync(locationKey);
         }
     }
 }

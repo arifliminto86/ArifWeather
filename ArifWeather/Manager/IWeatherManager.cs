@@ -24,7 +24,7 @@ namespace ArifWeather.Manager
         /// <returns></returns>
         List<Country> GetCountries(string regionCode);
 
-        TemperatureSearchResult GetForecastApi(string locationKey);
+        Task<TemperatureSearchResult> GetForecastApi(string locationKey);
 
     }
 }

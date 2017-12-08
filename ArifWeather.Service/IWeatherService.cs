@@ -7,6 +7,6 @@ namespace ArifWeather.Service
     {
         Task<Weather> GetCurrentConditionsAsync(string locationKey = "");
 
-        TemperatureSearchResult GetForecastApi(string locationKey);     
+        Task<TemperatureSearchResult> GetForecastApiAsync(string locationKey);     
     }
 }

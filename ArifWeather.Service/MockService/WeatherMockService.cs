@@ -2,31 +2,25 @@
 using System.Threading.Tasks;
 using ArifWeather.Model;
 
-namespace ArifWeather.Service
+namespace ArifWeather.Service.MockService
 {
     public class WeatherMockService : BaseMockService, IWeatherService
     {
-        public Weather SunnyWeather
+        public Weather SunnyWeather => new Weather
         {
-            get
+            IsDayTime = true,
+            LocalObservationDateTime = DateTime.Now.ToLongDateString(),
+            Temperature = new Temperature
             {
-                return new Weather()
-                {
-                    IsDayTime = true,
-                    LocalObservationDateTime = DateTime.Now.ToLongDateString(),
-                    Temperature = new Temperature()
-                    {
-                        Imperial = new Metric() { Unit = "celcius", UnitType = 1, Value = 20.0 },
-                        Metric = new Metric() { Unit = "celcius", UnitType = 1, Value = 23.3 }
-                    },
-                    WeatherIcon = 2,
-                    WeatherText = "Raining"
-                };
-            }
-        }
+                Imperial = new Metric { Unit = "celcius", UnitType = 1, Value = 20.0 },
+                Metric = new Metric { Unit = "celcius", UnitType = 1, Value = 23.3 }
+            },
+            WeatherIcon = 2,
+            WeatherText = "Raining"
+        };
+
         public WeatherMockService(User user) : base(user)
         {
-
         }
 
         public async Task<Weather> GetCurrentConditionsAsync(string locationKey = "")
@@ -34,15 +28,16 @@ namespace ArifWeather.Service
             return SunnyWeather;
         }
 
-        public TemperatureSearchResult GetForecastApi(string locationKey)
+        public async Task<TemperatureSearchResult> GetForecastApiAsync(string locationKey)
         {
-            return new TemperatureSearchResult
+            var result =  new TemperatureSearchResult
             {
                 Headline = BuildDummyHeadline(),
                 DailyForecasts = BuildDummyForecasts(),
                 Day = BuildDummyForecastDay(),
                 Night = BuildDummyForecastNight()
-            };            
+            };
+            return result;
         }
 
 
@@ -50,7 +45,7 @@ namespace ArifWeather.Service
 
         private Headline BuildDummyHeadline()
         {
-            return new Headline()
+            return new Headline
             {
                 EffectiveDate = DateTime.Now,
                 Severity = 4,
@@ -72,7 +67,7 @@ namespace ArifWeather.Service
 
         private ForeCast BuildDummyForecastDay()
         {
-            return new ForeCast()
+            return new ForeCast
             {
                 Icon= 14,
                 IconPhrase = "Partly sunny w/ showers",
@@ -104,10 +99,10 @@ namespace ArifWeather.Service
                 RainProbability = 50,
                 SnowProbability = 0,
                 IceProbability = 0,
-                Wind = new Wind()
+                Wind = new Wind
                 {
-                    Speed = new Metric() { Value = 4.6, Unit = "mi/h", UnitType = 9 },
-                    Direction = new Direction() { Degrees = 355, Localized = "W", English = "W" }
+                    Speed = new Metric{ Value = 4.6, Unit = "mi/h", UnitType = 9 },
+                    Direction = new Direction{ Degrees = 355, Localized = "W", English = "W" }
                 },
             };
         }
