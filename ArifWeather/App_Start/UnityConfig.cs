@@ -22,7 +22,7 @@ namespace ArifWeather
             var user = new User()
             {
                 UserName = ConfigurationManager.AppSettings["UserName"].ToString(),
-                Password = User.DecryptPassword(ConfigurationManager.AppSettings["EncryptedPassword"].ToString()),
+                Password = User.DecryptWord(ConfigurationManager.AppSettings["EncryptedWord"].ToString()),
                 IsMock = Convert.ToBoolean(isMock),
                 Version = ControllerHelper.GetVersionNumber()
             };

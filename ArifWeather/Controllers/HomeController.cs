@@ -22,7 +22,7 @@ namespace ArifWeather.Controllers
         {
             var page = await WeatherManager.GenerateHomePage();
             
-            ViewBag.RegionViewBags = ControllerHelper.GetRegions(page.TemperatureSearch.Regions);            
+            ViewBag.RegionViewBags = ControllerHelper.GetRegionListItems(page.TemperatureSearch.Regions);            
             return View(page);
         }
 

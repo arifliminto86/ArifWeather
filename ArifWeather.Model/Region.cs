@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ArifWeather.Model
 {
@@ -26,7 +25,7 @@ namespace ArifWeather.Model
         public static List<Region> GetDefaultRegions()
         {
            
-            return new List<Region>()
+            return new List<Region>
             {
                 new Region("AFR","Africa","Africa"),
                 new Region("ANT","Antarctica","Antarctica"),
@@ -39,8 +38,6 @@ namespace ArifWeather.Model
                 new Region("OCN","Oceania","Oceania"),
                 new Region("SAM","South America","South America")
             };
-
-            //Task.Run()
         }
 
     }

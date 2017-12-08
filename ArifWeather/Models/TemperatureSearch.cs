@@ -16,10 +16,5 @@ namespace ArifWeather.Models
         public string KeyWord { get; set; }        
 
         public TemperatureSearchResult SearchResult { get; set; }
-
-        public TemperatureSearch()
-        {
-            //nothing to do
-        }
     }
 }

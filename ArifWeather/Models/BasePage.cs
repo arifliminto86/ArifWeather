@@ -1,5 +1,4 @@
-﻿using ArifWeather.Service;
-using ArifWeather.Model;
+﻿using ArifWeather.Model;
 
 namespace ArifWeather.Models
 {
@@ -15,7 +14,5 @@ namespace ArifWeather.Models
         {
             CurrentWeatherInfo = new CurrentInfo();
         }
-
-
     }
 }

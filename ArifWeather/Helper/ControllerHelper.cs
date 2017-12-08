@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Reflection;
 
 using ArifWeather.Model;
+
 namespace ArifWeather.Helper
 {
     public static class ControllerHelper
@@ -12,9 +13,9 @@ namespace ArifWeather.Helper
         /// <summary>
         /// Change collection of regions to viewbagregion
         /// </summary>
-        /// <param name=""></param>
+        /// <param name="regions">regions that want to be converted</param>
         /// <returns></returns>
-        public static List<SelectListItem> GetRegions(List<Region> regions)
+        public static List<SelectListItem> GetRegionListItems(List<Region> regions)
         {
             var result = new List<SelectListItem>();
 
@@ -26,17 +27,24 @@ namespace ArifWeather.Helper
 
         }
 
+        /// <summary>
+        /// Get weather icon url
+        /// </summary>
+        /// <param name="weatherIcon">the weather icon</param>
+        /// <returns></returns>
         public static string GetWeatherIconUrl(int weatherIcon)
         {
-            var url = string.Empty;
-
-            url = weatherIcon > 10 
+            var url = weatherIcon > 10 
                 ? $"{DefaultWeatherIconUrl}/{weatherIcon}-s.png" 
                 : $"{DefaultWeatherIconUrl}/0{weatherIcon}-s.png";
 
             return url;
         }
 
+        /// <summary>
+        /// Get assembly version number
+        /// </summary>
+        /// <returns></returns>
         public static string GetVersionNumber()
         {
             return Assembly.GetCallingAssembly().GetName().Version.ToString();            

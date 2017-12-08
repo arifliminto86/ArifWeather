@@ -9,7 +9,7 @@ namespace ArifWeather.Service.Test
         [TestMethod]
         public void DecryptPasswordTest()
         {            
-            var password = User.DecryptPassword(_encryptedPassword);
+            var password = User.DecryptWord(_encryptedPassword);
 
             Assert.IsTrue(password == _currentUser.Password);
         }
@@ -17,7 +17,7 @@ namespace ArifWeather.Service.Test
         [TestMethod]
         public void EncryptPasswordTest()
         {
-            var encryptedPassword = User.EncryptedPassword(_currentUser.Password);
+            var encryptedPassword = User.EncryptedWord(_currentUser.Password);
 
             Assert.IsNotNull(encryptedPassword);
             Assert.IsTrue(encryptedPassword == _encryptedPassword);
