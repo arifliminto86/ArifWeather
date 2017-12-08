@@ -7,6 +7,7 @@ using ArifWeather.Model;
 using ArifWeather.Service;
 using ArifWeather.Helper;
 using ArifWeather.Manager;
+using ArifWeather.Service.Service;
 
 namespace ArifWeather
 {

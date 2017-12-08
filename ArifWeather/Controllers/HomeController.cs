@@ -8,11 +8,9 @@ namespace ArifWeather.Controllers
 {
     public class HomeController : BaseController
     {
-        private IWeatherManager _weatherManager;
-
-        public HomeController(IWeatherManager weatherManager) : base()
+        public HomeController(IWeatherManager weatherManager) : base(weatherManager)
         {
-            _weatherManager = weatherManager;      
+            WeatherManager = weatherManager;      
         }
 
         /// <summary>
@@ -22,7 +20,7 @@ namespace ArifWeather.Controllers
         [OutputCache(Duration =3600, VaryByParam ="none")]
         public async Task<ActionResult> Index()
         {
-            var page = await _weatherManager.GenerateHomePage();
+            var page = await WeatherManager.GenerateHomePage();
             
             ViewBag.RegionViewBags = ControllerHelper.GetRegions(page.TemperatureSearch.Regions);            
             return View(page);
@@ -49,24 +47,24 @@ namespace ArifWeather.Controllers
         /// <returns></returns>       
         public JsonResult GetCountries(string regionKey)
         {
-            var countries = _weatherManager.GetCountries(regionKey);
+            var countries = WeatherManager.GetCountries(regionKey);
             return Json(countries,JsonRequestBehavior.AllowGet);
         }
         
         public JsonResult GetCities(string countryCode)
         {
-            var cities = _weatherManager.GetCitiesBasedOnCountry(countryCode);
+            var cities = WeatherManager.GetCitiesBasedOnCountry(countryCode);
             return Json(cities, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetSearchResult(string city)
         {
-            var cities = _weatherManager.GetCityLocationKeys(city);
+            var cities = WeatherManager.GetCityLocationKeys(city);
             
             if(cities.Any())
             {
                 string locationKey = cities.First().Key;
-                var result = _weatherManager.GetForecastApi(locationKey);
+                var result = WeatherManager.GetForecastApi(locationKey);
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
 

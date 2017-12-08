@@ -1,11 +1,15 @@
 ﻿using System.Web.Mvc;
+using ArifWeather.Manager;
+
 namespace ArifWeather.Controllers
 {
     public class BaseController : Controller
     {
-        public BaseController()
+        protected IWeatherManager WeatherManager;
+
+        public BaseController(IWeatherManager weatherManager)
         {
-            //nothing to do
+            WeatherManager = weatherManager;
         }
     }
 }

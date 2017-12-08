@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using RestSharp;
 using ArifWeather.Model;
+using ArifWeather.Service.Service;
+
 namespace ArifWeather.Service
 {
     public class WeatherService : BaseService, IWeatherService
@@ -15,7 +17,7 @@ namespace ArifWeather.Service
         {                        
             if (string.IsNullOrEmpty(locationKey))
             {
-                locationKey = Default_Location_Key;
+                locationKey = DefaultLocationKey;
             }
 
             string restRequest = $@"currentconditions/v1/{locationKey}";
@@ -23,7 +25,7 @@ namespace ArifWeather.Service
             var request = BuildGetRequest(restRequest, Method.GET);
             //var t = _restClient.ExecuteAsGet<List<Weather>>(request, "GET");
             
-            var weather =  _restClient.ExecuteAsync<List<Weather>>(request, restResponse =>
+            var weather =  RestClient.ExecuteAsync<List<Weather>>(request, restResponse =>
             {
                 if (restResponse.ErrorException != null)
                 {

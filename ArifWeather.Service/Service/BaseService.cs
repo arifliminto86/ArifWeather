@@ -1,50 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ArifWeather.Model;
 using RestSharp;
 using RestSharp.Authenticators;
 
-using ArifWeather.Model;
-namespace ArifWeather.Service
+namespace ArifWeather.Service.Service
 {
     /// example of the complete request url : "http://dataservice.accuweather.com/locations/v1/regions?apikey=SWyBGk7GA5PUugswQ3znssNrJYeh1WUw"
     public class BaseService
     {
-        private const string DEFAULT_APP_KEY = "SWyBGk7GA5PUugswQ3znssNrJYeh1WUw";
+        private const string DefaultAppKey = "SWyBGk7GA5PUugswQ3znssNrJYeh1WUw";
         
-        private const string DEFAULT_URL = @"http://dataservice.accuweather.com";
+        private const string DefaultUrl = @"http://dataservice.accuweather.com";
     
         protected const int Timeout = 60;
 
-        protected const string Default_Location_Key = "26797";
+        protected const string DefaultLocationKey = "26797";
 
-        protected User _currentUser;
+        protected User CurrentUser;
 
-        protected string _AppKey { get; set; }
+        protected string AppKey { get; set; }
 
-        protected RestClient _restClient { get; set; }        
+        protected RestClient RestClient { get; set; }        
 
 
         public BaseService(User user)
         {
-            _currentUser = user;
-            _AppKey = DEFAULT_APP_KEY;
-            _restClient = new RestClient(DEFAULT_URL);
+            CurrentUser = user;
+            AppKey = DefaultAppKey;
+            RestClient = new RestClient(DefaultUrl);
         }
 
         public BaseService(string url, string appKey, User user)
         {
-            _currentUser = user;
-            _AppKey = appKey;
-            _restClient = new RestClient(url);
+            CurrentUser = user;
+            AppKey = appKey;
+            RestClient = new RestClient(url);
         }
 
         public RestRequest BuildGetRequest(string requestName, Method method, List<Parameter> queryParameters = null)
         {
             //authenticate user
-            _restClient.Authenticator = new SimpleAuthenticator("Username", _currentUser.UserName, "Password", _currentUser.Password);
+            RestClient.Authenticator = new SimpleAuthenticator("Username", CurrentUser.UserName, "Password", CurrentUser.Password);
 
             var restRequest = new RestRequest(requestName, method);
-            restRequest.AddQueryParameter("apikey", _AppKey);
+            restRequest.AddQueryParameter("apikey", AppKey);
             restRequest.RequestFormat = DataFormat.Json;
 
             if (queryParameters != null && queryParameters.Count > 0)

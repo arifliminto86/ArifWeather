@@ -4,11 +4,11 @@ using System.Linq;
 using ArifWeather.Model;
 using RestSharp;
 
-namespace ArifWeather.Service
+namespace ArifWeather.Service.Service
 {
     public class LocationService : BaseService, ILocationService
     {
-        private const string requestheader = @"locations/v1";
+        private const string Requestheader = @"locations/v1";
 
         public LocationService(User user) : base(user)
         {
@@ -17,9 +17,9 @@ namespace ArifWeather.Service
 
         public List<Country> GetCountries(string regionCode)
         {            
-            string restRequest = $@"{requestheader}/countries/{regionCode}";
+            string restRequest = $@"{Requestheader}/countries/{regionCode}";
             var request =  BuildGetRequest(restRequest, Method.GET);           
-            var countries = _restClient.Execute<List<Country>>(request);
+            var countries = RestClient.Execute<List<Country>>(request);
 
             if(!countries.Data.Any())
             {
@@ -30,14 +30,14 @@ namespace ArifWeather.Service
 
         public List<LocationKey> GetCityLocationKeys(string city)
         {
-            string restRequest = $@"{requestheader}/cities/autocomplete";
+            string restRequest = $@"{Requestheader}/cities/autocomplete";
             var parameters = new List<Parameter>
             {
                 new Parameter(){Name = "q", Value = city}
             };
             var request = BuildGetRequest(restRequest, Method.GET, parameters);
 
-            var locations = _restClient.Execute<List<LocationKey>>(request);
+            var locations = RestClient.Execute<List<LocationKey>>(request);
 
             if (!locations.Data.Any())
             {
@@ -53,7 +53,7 @@ namespace ArifWeather.Service
 
         public User GetCurrentUser()
         {
-            return _currentUser;
+            return CurrentUser;
         }
     }
 }

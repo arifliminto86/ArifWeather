@@ -1,4 +1,5 @@
 ﻿using ArifWeather.Model;
+using ArifWeather.Service.Service;
 
 namespace ArifWeather.Service
 {
@@ -11,7 +12,7 @@ namespace ArifWeather.Service
 
         public User GetCurrentUser()
         {
-            return _currentUser;
+            return CurrentUser;
         }
     }
 }

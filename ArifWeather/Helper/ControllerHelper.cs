@@ -8,6 +8,7 @@ namespace ArifWeather.Helper
     public static class ControllerHelper
     {
         private static readonly string DefaultWeatherIconUrl = @"https://developer.accuweather.com/sites/default/files/";
+
         /// <summary>
         /// Change collection of regions to viewbagregion
         /// </summary>
@@ -29,10 +30,9 @@ namespace ArifWeather.Helper
         {
             var url = string.Empty;
 
-            if (weatherIcon > 10)
-                url = $"{DefaultWeatherIconUrl}/{weatherIcon}-s.png";
-            else
-                url = $"{DefaultWeatherIconUrl}/0{weatherIcon}-s.png";
+            url = weatherIcon > 10 
+                ? $"{DefaultWeatherIconUrl}/{weatherIcon}-s.png" 
+                : $"{DefaultWeatherIconUrl}/0{weatherIcon}-s.png";
 
             return url;
         }

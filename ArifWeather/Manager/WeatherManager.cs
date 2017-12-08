@@ -10,9 +10,9 @@ namespace ArifWeather.Manager
 {
     public class WeatherManager : IWeatherManager
     {
-        private IUserService _userService;
-        private IWeatherService _weatherService;
-        private ILocationService _locationService;
+        private readonly IUserService _userService;
+        private readonly IWeatherService _weatherService;
+        private readonly ILocationService _locationService;
 
         public WeatherManager(IUserService userService, IWeatherService weatherService,
                                 ILocationService locationService)
@@ -24,8 +24,7 @@ namespace ArifWeather.Manager
 
         public async Task<HomePage> GenerateHomePage()
         {
-            var homepage = new HomePage();
-            homepage.CurrentUser = _userService.GetCurrentUser();
+            var homepage = new HomePage {CurrentUser = _userService.GetCurrentUser()};
 
             //TODO: asynch also 
             var currentConditions = await _weatherService.GetCurrentConditionsAsync();
@@ -34,8 +33,7 @@ namespace ArifWeather.Manager
             var currentConditionResults = currentConditions;
             homepage.CurrentWeatherInfo.CurrentTemperature = currentConditionResults.Temperature.Metric.Value;
             homepage.CurrentWeatherInfo.CurrentWeatherIconUrl = ControllerHelper.GetWeatherIconUrl(currentConditionResults.WeatherIcon);
-            homepage.TemperatureSearch = new TemperatureSearch();            
-            homepage.TemperatureSearch.Regions = region;
+            homepage.TemperatureSearch = new TemperatureSearch {Regions = region};
 
             return homepage;
         }
