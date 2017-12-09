@@ -10,7 +10,7 @@ namespace ArifWeather.Service.Service
     {
         private const string Requestheader = @"locations/v1";
 
-        public LocationService(User user) : base(user)
+        public LocationService(User user, string apiUrl) : base(user, apiUrl)
         {
 
         }

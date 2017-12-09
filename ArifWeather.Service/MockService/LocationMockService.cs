@@ -1,50 +1,30 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
 using ArifWeather.Model;
 
-namespace ArifWeather.Service
+namespace ArifWeather.Service.MockService
 {
     public class LocationMockService : BaseMockService, ILocationService
     {
         #region DummyData
-        public List<LocationKey> _AusieCities
+        public List<LocationKey> AusieCities => new List<LocationKey>()
         {
-            get
-            {
-                return new List<LocationKey>()
-                {
-                    new LocationKey(){Country = Australia, Key="1", Rank=5, Type="City", Name = "Perth"},
-                    new LocationKey(){Country = Australia, Key="2", Rank=4, Type="City", Name = "Melbourne"},
-                    new LocationKey(){Country = Australia, Key="3", Rank=3, Type="City", Name = "Sydney"},
-                    new LocationKey(){Country = Australia, Key="4", Rank=2, Type="City", Name = "Brisbane"},
-                    new LocationKey(){Country = Australia, Key="5", Rank=1, Type="City", Name = "Adelaide"},
-                };
-            }
-        }
+            new LocationKey(){Country = Australia, Key="1", Rank=5, Type="City", Name = "Perth"},
+            new LocationKey(){Country = Australia, Key="2", Rank=4, Type="City", Name = "Melbourne"},
+            new LocationKey(){Country = Australia, Key="3", Rank=3, Type="City", Name = "Sydney"},
+            new LocationKey(){Country = Australia, Key="4", Rank=2, Type="City", Name = "Brisbane"},
+            new LocationKey(){Country = Australia, Key="5", Rank=1, Type="City", Name = "Adelaide"},
+        };
 
-        public List<Country> _OceaniaCountries
+        public List<Country> OceaniaCountries => new List<Country>
         {
-            get
-            {
-                return new List<Country>()
-                {
-                    new Country(){ID = "AU", EnglishName="Australia", LocalizedName = "Australia"},
-                    new Country(){ID = "NZ", EnglishName = "New Zealand", LocalizedName = "New Zealand"},
-                    new Country(){ID = "FJ", EnglishName = "Fiji", LocalizedName = "Fiji"},                    
-                };
-            }
-        }
-        
+            new Country(){ID = "AU", EnglishName="Australia", LocalizedName = "Australia"},
+            new Country(){ID = "NZ", EnglishName = "New Zealand", LocalizedName = "New Zealand"},
+            new Country(){ID = "FJ", EnglishName = "Fiji", LocalizedName = "Fiji"},                    
+        };
 
         #endregion
-        public Country Australia
-        {
-            get
-            {
-                return new Country() { EnglishName = "Australia", LocalizedName = "Australia", ID = "1" };
-            }
-        }
+        public Country Australia => new Country() { EnglishName = "Australia", LocalizedName = "Australia", ID = "1" };
 
         public LocationMockService(User user) : base(user)
         {
@@ -55,7 +35,7 @@ namespace ArifWeather.Service
         {
             var countries = new List<Country>();
 
-            return _AusieCities;
+            return AusieCities;
         }
 
         public List<Country> GetCountries(string regionCode)
@@ -63,7 +43,7 @@ namespace ArifWeather.Service
             var countries = new List<Country>();
             if (regionCode == "OCN")
             {
-                countries = _OceaniaCountries;
+                countries = OceaniaCountries;
             }
             return countries;
         }

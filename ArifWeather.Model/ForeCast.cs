@@ -12,6 +12,5 @@
         public double SnowProbability { get; set; }
         public double IceProbability { get; set; }
         public Wind Wind { get; set; }
-    }    
-
+    }
 }

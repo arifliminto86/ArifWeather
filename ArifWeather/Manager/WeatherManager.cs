@@ -25,7 +25,6 @@ namespace ArifWeather.Manager
         {
             var homepage = new HomePage {CurrentUser = _userService.GetCurrentUser()};
 
-            //TODO: asynch also 
             var currentConditions = await _weatherService.GetCurrentConditionsAsync();
             var region = Region.GetDefaultRegions();
  

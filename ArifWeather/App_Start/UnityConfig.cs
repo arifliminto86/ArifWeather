@@ -14,6 +14,9 @@ namespace ArifWeather
 {
     public static class UnityConfig
     {
+        /// <summary>
+        /// Register all the dependency injections
+        /// </summary>
         public static void RegisterComponents()
         {
             var container = new UnityContainer();
@@ -29,10 +32,11 @@ namespace ArifWeather
             };
 
             if (!user.IsMock)
-            {                
-                container.RegisterType<ILocationService, LocationService>(new InjectionConstructor(user));
-                container.RegisterType<IWeatherService, WeatherService>(new InjectionConstructor(user));
-                container.RegisterType<IUserService, UserService>(new InjectionConstructor(user));
+            {
+                string apiUrl = ConfigurationManager.AppSettings["DefaultUrl"].ToString();
+                container.RegisterType<ILocationService, LocationService>(new InjectionConstructor(user, apiUrl));
+                container.RegisterType<IWeatherService, WeatherService>(new InjectionConstructor(user, apiUrl));
+                container.RegisterType<IUserService, UserService>(new InjectionConstructor(user, apiUrl));
             }
             else if(user.IsMock)
             {

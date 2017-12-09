@@ -8,12 +8,11 @@ namespace ArifWeather.Service.Test
     [TestClass]
     public class LocationServiceTest : BaseTest
     {
-        private ILocationService _locationService;
+        private readonly ILocationService _locationService;
                 
         public LocationServiceTest()
         {
-            
-            _locationService = new LocationService(_currentUser);
+            _locationService = new LocationService(CurrentUser, DefaultUrl);
         }
 
         [TestMethod]

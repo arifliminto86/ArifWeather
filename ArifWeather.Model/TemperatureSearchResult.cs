@@ -14,7 +14,7 @@ namespace ArifWeather.Model
     {
         public DateTime EffectiveDate { get; set; }
         public int Severity { get; set; }
-        public string Text { get; set; } //Summary
+        public string Text { get; set; } 
         public string Category { get; set; }        
     }
 

@@ -10,8 +10,6 @@ namespace ArifWeather.Service.Service
     {
         private const string DefaultAppKey = "SWyBGk7GA5PUugswQ3znssNrJYeh1WUw";
         
-        private const string DefaultUrl = @"http://dataservice.accuweather.com";
-    
         protected const int Timeout = 60;
 
         protected const string DefaultLocationKey = "26797";
@@ -23,11 +21,11 @@ namespace ArifWeather.Service.Service
         protected RestClient RestClient { get; set; }        
 
 
-        public BaseService(User user)
+        public BaseService(User user, string apiUrl)
         {
             CurrentUser = user;
             AppKey = DefaultAppKey;
-            RestClient = new RestClient(DefaultUrl);
+            RestClient = new RestClient(apiUrl);
         }
 
         public BaseService(string url, string appKey, User user)

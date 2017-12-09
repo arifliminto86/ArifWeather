@@ -8,7 +8,7 @@ namespace ArifWeather.Service.Service
 {
     public class WeatherService : BaseService, IWeatherService
     {
-        public WeatherService(User user) : base(user)
+        public WeatherService(User user, string apiUrl) : base(user, apiUrl)
         {
         }
 

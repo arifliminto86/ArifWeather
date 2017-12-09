@@ -8,11 +8,13 @@ namespace ArifWeather.Service.Test
     [TestClass]
     public class BaseTest
     {
-        protected User _currentUser;
+        protected User CurrentUser;
+
+        protected string DefaultUrl = @"http://dataservice.accuweather.com";
 
         public BaseTest()
         {
-            _currentUser = new User()
+            CurrentUser = new User()
             {
                 UserName = "arifliminto86", 
                 Password = "Bingo123"

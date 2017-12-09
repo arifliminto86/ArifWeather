@@ -5,7 +5,7 @@ namespace ArifWeather.Service
 {
     public class UserService : BaseService, IUserService
     {
-        public UserService(User user) : base(user)
+        public UserService(User user, string apiUrl) : base(user, apiUrl)
         {
             //nothing to do yet
         }

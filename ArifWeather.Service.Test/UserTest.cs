@@ -11,13 +11,13 @@ namespace ArifWeather.Service.Test
         {            
             var password = User.DecryptWord(_encryptedPassword);
 
-            Assert.IsTrue(password == _currentUser.Password);
+            Assert.IsTrue(password == CurrentUser.Password);
         }
 
         [TestMethod]
         public void EncryptPasswordTest()
         {
-            var encryptedPassword = User.EncryptedWord(_currentUser.Password);
+            var encryptedPassword = User.EncryptedWord(CurrentUser.Password);
 
             Assert.IsNotNull(encryptedPassword);
             Assert.IsTrue(encryptedPassword == _encryptedPassword);

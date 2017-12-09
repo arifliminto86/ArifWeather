@@ -1,14 +1,14 @@
-﻿
-using ArifWeather.Model;
-namespace ArifWeather.Service
+﻿using ArifWeather.Model;
+
+namespace ArifWeather.Service.MockService
 {
     public class BaseMockService
     {
-        protected User _currentUser;
+        protected User CurrentUser;
 
         public BaseMockService(User user)
         {
-            _currentUser = user;
+            CurrentUser = user;
         }
     }
 }
