@@ -72,45 +72,41 @@
                 data: { city: city },
                 success: function (data) {
                     $("#SearchResult").show();
-                    alert(data);
-                    populateHeading(data.Headline);
-                    populateDailyForeCast(data.DailyForecasts);
-                },
+                    populateWeather(data);
+                },             
                 fail: function (jqXHR, textStatus, errorThrown) {
                     alert("error");
                 }
             });
     }
 
-    function populateHeading(headline) {
-        alert(headline);
-        var datestr = new Date(parseInt(headline.EffectiveDate.substr(6)));
+    function populateWeather(data) {        
+        //var datestr = new Date(parseInt(data.LocalObservationDateTime.substr(6)));
         
-        $("#EffectiveDateResult").text(datestr);
-        $("#SummaryResult").text(headline.Text);
+        $("#LocalObservationDateTime").text(data.LocalObservationDateTime);        
+        $("#WeatherText").text(data.WeatherText);
 
-        var severityStr = "";
 
-        if (headline.Severity < 10)
+        if (data.IsDayTime == "true") {
+            $("#IsDayTime").text("Day");    
+        }
+        else
+            $("#IsDayTime").text("Night");    
+        
+        var weatherIcon = data.WeatherIcon <10 ? "0"+data.WeatherIcon : data.WeatherIcon;
+
+        if (data.WeatherIcon < 10)
         {
-            severityStr = "0" + headline.Severity;
+            weatherIcon = "0" + data.WeatherIcon;
         }
         else
         {
-            severityStr = headline.Severity;
-            
-        }        
-        var imgurl = "https://developer.accuweather.com/sites/default/files/" + severityStr+"-s.png";
+            weatherIcon = data.WeatherIcon;
+        }
+        var imgurl = "https://developer.accuweather.com/sites/default/files/" + weatherIcon+"-s.png";
                 
-        $("#SeverityImage").attr("src", imgurl);      
-    }
-
-    function populateDailyForeCast(dailyforecast)
-    {
-        var minimum = dailyforecast.Temperature.Minimum.Value + " " + dailyforecast.Temperature.Minimum.Unit;
-        var maximum = dailyforecast.Temperature.Maximum.Value + " " + dailyforecast.Temperature.Maximum.Unit
-
-        $("#DailyForecastTemperatureMin").text(minimum.toString());
-        $("#DailyForecastTemperatureMax").text(maximum.toString());        
-    }
+        $("#WeatherIcon").attr("src", imgurl);
+        
+        $("#Temperature").Text(data.Temperature.Metric.Value);
+    }    
 }

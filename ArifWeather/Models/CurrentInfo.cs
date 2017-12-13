@@ -12,10 +12,13 @@ namespace ArifWeather.Models
 
         public string CurrentWeatherIconUrl { get; set; }
 
+        /// <summary>
+        /// Default ctor (by default, it will set to Perth)
+        /// </summary>
         public CurrentInfo()
         {
             CurrentDateTime = DateTime.Now;
             CurrentLocation = "Perth";
-        }
+        }        
     }
 }

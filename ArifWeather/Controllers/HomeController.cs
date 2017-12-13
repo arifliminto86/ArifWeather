@@ -35,7 +35,6 @@ namespace ArifWeather.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
         
@@ -63,7 +62,7 @@ namespace ArifWeather.Controllers
             if(cities.Any())
             {
                 string locationKey = cities.First().Key;
-                var result = WeatherManager.GetCurrentConditionsAsync(locationKey);
+                var result = WeatherManager.GetCurrentConditionsAsync(locationKey).Result;
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
 

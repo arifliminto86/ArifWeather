@@ -42,16 +42,13 @@
   <ItemGroup>
     <Compile Include="City.cs" />
     <Compile Include="Country.cs" />
-    <Compile Include="ForeCast.cs" />
     <Compile Include="Metric.cs" />
-    <Compile Include="Location.cs" />
     <Compile Include="LocationKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="Temperature.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Weather.cs" />
-    <Compile Include="Wind.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
