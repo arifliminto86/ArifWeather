@@ -1,8 +1,8 @@
 ﻿
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using ArifWeather.Model;
 using ArifWeather.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ArifWeather.Manager
 {
@@ -24,7 +24,11 @@ namespace ArifWeather.Manager
         /// <returns></returns>
         List<Country> GetCountries(string regionCode);
 
-        Task<TemperatureSearchResult> GetForecastApi(string locationKey);
-
+        /// <summary>
+        /// Get current weather condition based on location code
+        /// </summary>
+        /// <param name="locationCode">the location code</param>
+        /// <returns></returns>
+        Task<Weather> GetCurrentConditionsAsync(string locationCode);        
     }
 }

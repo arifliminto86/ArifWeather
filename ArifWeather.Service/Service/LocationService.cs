@@ -10,10 +10,7 @@ namespace ArifWeather.Service.Service
     {
         private const string Requestheader = @"locations/v1";
 
-        public LocationService(User user, string apiUrl) : base(user, apiUrl)
-        {
-
-        }
+        public LocationService(User user, string apiUrl) : base(user, apiUrl){}
 
         public List<Country> GetCountries(string regionCode)
         {            
@@ -49,11 +46,6 @@ namespace ArifWeather.Service.Service
         public List<City> GetCitiesBasedOnCountry(string countryCode)
         {
             return City.Cities.Where(w => w.CountryCode == countryCode).ToList();
-        }
-
-        public User GetCurrentUser()
-        {
-            return CurrentUser;
-        }
+        }        
     }
 }

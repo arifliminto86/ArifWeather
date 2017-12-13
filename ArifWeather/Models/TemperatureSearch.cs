@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-
 using ArifWeather.Model;
 
 namespace ArifWeather.Models
 {
     public class TemperatureSearch
-    {        
+    {
         public List<Region> Regions { get; set; }
         public List<Country> Countries { get; set; }
 
@@ -15,6 +14,6 @@ namespace ArifWeather.Models
         public string City { get; set; }        
         public string KeyWord { get; set; }        
 
-        public TemperatureSearchResult SearchResult { get; set; }
+        public Weather SearchResult { get; set; }
     }
 }

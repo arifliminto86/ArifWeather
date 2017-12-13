@@ -10,7 +10,7 @@ namespace ArifWeather.Controllers
     {
         public HomeController(IWeatherManager weatherManager) : base(weatherManager)
         {
-            WeatherManager = weatherManager;      
+            WeatherManager = weatherManager;
         }
 
         /// <summary>
@@ -38,7 +38,6 @@ namespace ArifWeather.Controllers
 
             return View();
         }
-
         
         /// <summary>
         /// Get countries based on region key
@@ -64,7 +63,7 @@ namespace ArifWeather.Controllers
             if(cities.Any())
             {
                 string locationKey = cities.First().Key;
-                var result = WeatherManager.GetForecastApi(locationKey);
+                var result = WeatherManager.GetCurrentConditionsAsync(locationKey);
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
 

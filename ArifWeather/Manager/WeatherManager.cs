@@ -51,9 +51,10 @@ namespace ArifWeather.Manager
             return _locationService.GetCountries(regionCode);
         }
 
-        public async Task<TemperatureSearchResult> GetForecastApi(string locationKey)
+        public async Task<Weather> GetCurrentConditionsAsync(string locationCode)
         {
-            return await _weatherService.GetForecastApiAsync(locationKey);
+            var weather = await _weatherService.GetCurrentConditionsAsync();
+            return weather;
         }
     }
 }
