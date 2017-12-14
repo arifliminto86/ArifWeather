@@ -12,13 +12,6 @@
 <div class="form-horizontal">
      
     <div class="form-group">
-        <label for="keyword" class="control-label col-md-2">Key Word : </label>
-        <div class="col-md-5">
-            @Html.TextBox("Keyword", Model.KeyWord, new { @class = "form-control", })
-        </div>
-    </div>
-
-    <div class="form-group">
         <label for="RegionList" class="control-label col-md-2">Region</label>
         <div class="col-md-5">
 
@@ -37,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        <label for="City" class="control-label col-md-2">City  </label>
+        <label for="CityList" class="control-label col-md-2">City  </label>
         <div class="col-md-5">
             @Html.DropDownList("CityList", new List<SelectListItem>(), new { @class = "form-control" })                
         </div>

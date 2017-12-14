@@ -21,7 +21,7 @@
                 complete: function () {
                     var country = $("#CountryList option:selected").val();
                     if (country != null)
-                    {                       
+                    {
                         getCitiesPrivate(country);
                     }
                 }
@@ -55,14 +55,8 @@
             });
     }
 
-    this.Search = function() {
-        //$('#Crd option:selected').text();
+    this.Search = function() {        
         var city = $("#CityList option:selected").text();
-        if (city == null || city === "" ) {
-
-            alert("City is required!");
-            return;
-        }
 
         $.ajax(
             {
@@ -80,33 +74,23 @@
             });
     }
 
-    function populateWeather(data) {        
-        //var datestr = new Date(parseInt(data.LocalObservationDateTime.substr(6)));
+    function populateWeather(data) {
         
-        $("#LocalObservationDateTime").text(data.LocalObservationDateTime);        
+        $("#LocalObservationDateTime").text(data.LocalObservationDateTime);
         $("#WeatherText").text(data.WeatherText);
 
 
-        if (data.IsDayTime == "true") {
+        if (data.IsDayTime === "true") {
             $("#IsDayTime").text("Day");    
         }
         else
             $("#IsDayTime").text("Night");    
         
         var weatherIcon = data.WeatherIcon <10 ? "0"+data.WeatherIcon : data.WeatherIcon;
-
-        if (data.WeatherIcon < 10)
-        {
-            weatherIcon = "0" + data.WeatherIcon;
-        }
-        else
-        {
-            weatherIcon = data.WeatherIcon;
-        }
         var imgurl = "https://developer.accuweather.com/sites/default/files/" + weatherIcon+"-s.png";
                 
         $("#WeatherIcon").attr("src", imgurl);
         
-        $("#Temperature").Text(data.Temperature.Metric.Value);
+        $("#Temperature").text(data.Temperature.Metric.Value);
     }    
 }

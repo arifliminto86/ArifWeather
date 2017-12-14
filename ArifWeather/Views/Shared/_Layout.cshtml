@@ -8,8 +8,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/ArifWeatherScript")       
+    @Scripts.Render("~/bundles/ArifWeatherScript")
 </head>
 <body>
     <div id="wrap">
@@ -68,12 +69,9 @@
         <div class="container">
             <p>&copy; @DateTime.Now.Year - Arif Weather Application. All right reserverd. Any commercial use or distribution without the express written consent of Arif is strictly prohibited</p>
         </div>
-    </footer>
+    </footer>  
 
-    
-
-  
-    @RenderSection("scripts", required: false)
+@RenderSection("scripts", required: false)
 
 </body>
 </html>
