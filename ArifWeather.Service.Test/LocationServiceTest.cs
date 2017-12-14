@@ -23,5 +23,12 @@ namespace ArifWeather.Service.Test
             Assert.IsNotNull(countries);
         }
 
+        [TestMethod]
+        public void TestGetLocationCodes()
+        {
+            var locationcode = _locationService.GetCityLocationKeys("Perth");
+            Assert.IsNotNull(locationcode[0].Key);
+
+        }
     }
 }

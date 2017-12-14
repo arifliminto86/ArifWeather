@@ -10,35 +10,37 @@
 </script>
 
 <div class="form-horizontal">
-     
+
     <div class="form-group">
         <label for="RegionList" class="control-label col-md-2">Region</label>
         <div class="col-md-5">
 
-            @Html.DropDownList("RegionsList", (IEnumerable<SelectListItem>)ViewBag.RegionViewBags,
-        new { @class = "form-control", @onchange = "_temperatureSearch.GetCountries(this.value)" })
+            @Html.DropDownList("RegionsList", (IEnumerable<SelectListItem>) ViewBag.RegionViewBags,
+                new {@class = "form-control", @onchange = "_temperatureSearch.GetCountries(this.value)"})
         </div>
     </div>
 
     <div class="form-group">
         <label for="CountryList" class="control-label col-md-2">Country</label>
         <div class="col-md-5">
-            @Html.DropDownList("CountryList", new List<SelectListItem>(), new { @class = "form-control"
-            , @onchange = "_temperatureSearch.GetCities(this.value)"
-       })
+            @Html.DropDownList("CountryList", new List<SelectListItem>(), new
+            {
+                @class = "form-control"
+                , @onchange = "_temperatureSearch.GetCities(this.value)"
+            })
         </div>
     </div>
 
     <div class="form-group">
-        <label for="CityList" class="control-label col-md-2">City  </label>
+        <label for="CityList" class="control-label col-md-2">City </label>
         <div class="col-md-5">
-            @Html.DropDownList("CityList", new List<SelectListItem>(), new { @class = "form-control" })                
+            @Html.DropDownList("CityList", new List<SelectListItem>(), new {@class = "form-control"})
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            <input type="submit" value="Search" class="btn btn-danger" onclick="_temperatureSearch.Search()" />
+            <input type="submit" value="Search" class="btn btn-danger" onclick="_temperatureSearch.Search()"/>
         </div>
     </div>
 </div>

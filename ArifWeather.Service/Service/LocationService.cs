@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using ArifWeather.Model;
 using RestSharp;
 
@@ -27,16 +28,17 @@ namespace ArifWeather.Service.Service
 
         public List<LocationKey> GetCityLocationKeys(string city)
         {
-            string restRequest = $@"{Requestheader}/cities/autocomplete";
+            string restRequest = $@"{Requestheader}/cities/search";
+
             var parameters = new List<Parameter>
             {
-                new Parameter(){Name = "q", Value = city}
+                new Parameter{Name = "q", Value = city.ToLower()}
             };
             var request = BuildGetRequest(restRequest, Method.GET, parameters);
 
             var locations = RestClient.Execute<List<LocationKey>>(request);
 
-            if (!locations.Data.Any())
+            if (locations.StatusCode == HttpStatusCode.NotFound)
             {
                 throw new NullReferenceException($@"Cannot find city : {city}");
             }
