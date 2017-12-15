@@ -5,6 +5,18 @@ namespace ArifWeather.Service
 {
     public interface IWeatherService
     {
+        /// <summary>
+        /// Get current conditions async
+        /// </summary>
+        /// <param name="locationKey">the city location key</param>
+        /// <returns></returns>
         Task<Weather> GetCurrentConditionsAsync(string locationKey = "");
+
+        /// <summary>
+        /// Get current conditions
+        /// </summary>
+        /// <param name="locationKey"></param>
+        /// <returns></returns>
+        Weather GetCurrentCondition(string locationKey = "");
     }
 }

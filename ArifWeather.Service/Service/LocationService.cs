@@ -32,7 +32,12 @@ namespace ArifWeather.Service.Service
 
             var parameters = new List<Parameter>
             {
-                new Parameter{Name = "q", Value = city.ToLower()}
+                new Parameter
+                {
+                    Name = "q",
+                    Value = city.ToLower(),                    
+                    Type =   ParameterType.QueryString
+                }
             };
             var request = BuildGetRequest(restRequest, Method.GET, parameters);
 

@@ -24,6 +24,11 @@ namespace ArifWeather.Service.MockService
         public async Task<Weather> GetCurrentConditionsAsync(string locationKey = "")
         {
             return SunnyWeather;
-        }     
+        }
+
+        public Weather GetCurrentCondition(string locationKey = "")
+        {
+            return SunnyWeather;
+        }
     }
 }

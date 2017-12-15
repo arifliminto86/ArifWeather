@@ -40,5 +40,10 @@ namespace ArifWeather.Service.Service
             }
             return weatherResult.Data[0];
         }
+
+        public Weather GetCurrentCondition(string locationKey = "")
+        {
+            throw new NotImplementedException();
+        }
     }
 }

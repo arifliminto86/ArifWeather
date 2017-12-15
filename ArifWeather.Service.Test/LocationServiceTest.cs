@@ -1,6 +1,4 @@
-﻿using System;
-using ArifWeather.Model;
-using ArifWeather.Service.Service;
+﻿using ArifWeather.Service.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ArifWeather.Service.Test
