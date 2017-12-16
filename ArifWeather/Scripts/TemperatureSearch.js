@@ -70,6 +70,9 @@
                 },             
                 fail: function (jqXHR, textStatus, errorThrown) {
                     alert("error");
+                },
+                error: function(error) {
+                    alert(error);
                 }
             });
     }

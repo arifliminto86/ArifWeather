@@ -30,3 +30,5 @@ ArifWeather.Model/bin/Debug/ArifWeather.Model.dll
 .vs/ArifWeather/v15/Server/sqlite3/storage.ide
 .vs/ArifWeather/v15/Server/sqlite3/db.lock
 .vs/ArifWeather/v15/.suo
+ArifWeather.Database/bin/
+ArifWeather.Database/obj/

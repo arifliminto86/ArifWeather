@@ -67,6 +67,10 @@ namespace ArifWeather.Controllers
         /// <returns></returns>
         public JsonResult GetSearchResult(string city)
         {
+            if (string.IsNullOrWhiteSpace(city))
+            {
+                throw new ArgumentNullException(@"City is required");
+            }
             var cities = WeatherManager.GetCityLocationKeys(city);
             
             if(cities.Any())

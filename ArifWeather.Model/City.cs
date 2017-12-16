@@ -8,11 +8,19 @@ namespace ArifWeather.Model
         public string CountryCode { get; set; }
         public LocationKey LocationKey { get; set; }
 
+        /// <summary>
+        /// Default ctor
+        /// </summary>
         public City()
         {
             //nothing to do
         }
 
+        /// <summary>
+        /// Custom Ctor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="countryCode"></param>
         public City(string name, string countryCode)
         {
             Name = name;
@@ -26,7 +34,7 @@ namespace ArifWeather.Model
         {
             get
             {
-                return new List<City>()
+                return new List<City>
                 {
                     new City("Perth","AU"),
                     new City("Melbourne","AU"),
