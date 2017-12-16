@@ -8,8 +8,18 @@ namespace ArifWeather.Service.Service
 {
     public class WeatherService : BaseService, IWeatherService
     {
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="user">user that can request api</param>
+        /// <param name="apiUrl">base api url</param>
         public WeatherService(User user, string apiUrl) : base(user, apiUrl){}
 
+        /// <summary>
+        /// Get current conditions async
+        /// </summary>
+        /// <param name="locationKey">the city location key</param>
+        /// <returns></returns>
         public async Task<Weather> GetCurrentConditionsAsync(string locationKey = "")
         {                        
             if (string.IsNullOrEmpty(locationKey))
@@ -40,10 +50,30 @@ namespace ArifWeather.Service.Service
             }
             return weatherResult.Data[0];
         }
-
-        public Weather GetCurrentCondition(string locationKey = "")
+        
+        /// <summary>
+        /// Get non async current conditions
+        /// </summary>
+        /// <param name="locationKey">the city location key</param>
+        /// <returns></returns>
+        public Weather GetCurrentConditions(string locationKey = "")
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(locationKey))
+            {
+                locationKey = DefaultLocationKey;
+            }
+
+            string restRequest = $@"currentconditions/v1/{locationKey}";
+
+            var request = BuildGetRequest(restRequest, Method.GET);
+            var weather = RestClient.Execute<List<Weather>>(request);
+
+            if (weather.Data == null)
+            {
+                throw new ArgumentException($@"Invalid locationKey : {locationKey}");
+            }
+            return weather.Data[0];
         }
+        
     }
 }

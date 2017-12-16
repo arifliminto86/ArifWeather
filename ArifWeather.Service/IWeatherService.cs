@@ -13,10 +13,10 @@ namespace ArifWeather.Service
         Task<Weather> GetCurrentConditionsAsync(string locationKey = "");
 
         /// <summary>
-        /// Get current conditions
+        /// Get non async current conditions
         /// </summary>
-        /// <param name="locationKey"></param>
+        /// <param name="locationKey">the city location key</param>
         /// <returns></returns>
-        Weather GetCurrentCondition(string locationKey = "");
+        Weather GetCurrentConditions(string locationKey = "");
     }
 }

@@ -29,6 +29,6 @@ namespace ArifWeather.Manager
         /// </summary>
         /// <param name="locationCode">the location code</param>
         /// <returns></returns>
-        Task<Weather> GetCurrentConditionsAsync(string locationCode);        
+        Weather GetCurrentConditions(string locationCode);        
     }
 }

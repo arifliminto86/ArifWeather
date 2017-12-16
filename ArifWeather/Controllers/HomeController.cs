@@ -62,7 +62,7 @@ namespace ArifWeather.Controllers
             if(cities.Any())
             {
                 string locationKey = cities.First().Key;
-                var result = WeatherManager.GetCurrentConditionsAsync(locationKey).Result;
+                var result = WeatherManager.GetCurrentConditions(locationKey);
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
 

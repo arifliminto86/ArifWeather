@@ -26,7 +26,7 @@ namespace ArifWeather.Service.MockService
             return SunnyWeather;
         }
 
-        public Weather GetCurrentCondition(string locationKey = "")
+        public Weather GetCurrentConditions(string locationKey = "")
         {
             return SunnyWeather;
         }
