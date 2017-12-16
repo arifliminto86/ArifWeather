@@ -24,7 +24,6 @@ namespace ArifWeather.Helper
                 result.Add(new SelectListItem() { Text = region.LocalizedName, Value = region.ID });
             }
             return result;
-
         }
 
         /// <summary>

@@ -49,12 +49,22 @@ namespace ArifWeather.Controllers
             return Json(countries,JsonRequestBehavior.AllowGet);
         }
         
+        /// <summary>
+        /// Json result that used in combobox ui for get all cities in one country
+        /// </summary>
+        /// <param name="countryCode">the country code</param>
+        /// <returns></returns>
         public JsonResult GetCities(string countryCode)
         {
             var cities = WeatherManager.GetCitiesBasedOnCountry(countryCode);
             return Json(cities, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Search weather current conditions.
+        /// </summary>
+        /// <param name="city">the requested city</param>
+        /// <returns></returns>
         public JsonResult GetSearchResult(string city)
         {
             var cities = WeatherManager.GetCityLocationKeys(city);
