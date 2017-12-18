@@ -12,6 +12,9 @@ namespace ArifWeather.Service.Service
         
         protected const int Timeout = 60;
 
+        /// <summary>
+        /// Perth is the default location key
+        /// </summary>
         protected const string DefaultLocationKey = "26797";
 
         protected User CurrentUser;
@@ -19,7 +22,6 @@ namespace ArifWeather.Service.Service
         protected string AppKey { get; set; }
 
         protected RestClient RestClient { get; set; }        
-
 
         public BaseService(User user, string apiUrl)
         {

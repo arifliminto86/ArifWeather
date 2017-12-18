@@ -7,7 +7,7 @@ namespace ArifWeather.Service.MockService
     public class LocationMockService : BaseMockService, ILocationService
     {
         #region DummyData
-        public List<LocationKey> AusieCities => new List<LocationKey>()
+        private List<LocationKey> AusieCities => new List<LocationKey>()
         {
             new LocationKey{Country = Australia, Key="1", Rank=5, Type="City", Name = "Perth"},
             new LocationKey{Country = Australia, Key="2", Rank=4, Type="City", Name = "Melbourne"},
@@ -16,11 +16,16 @@ namespace ArifWeather.Service.MockService
             new LocationKey{Country = Australia, Key="5", Rank=1, Type="City", Name = "Adelaide"},
         };
 
-        public List<Country> OceaniaCountries => new List<Country>
+        private List<Country> OceaniaCountries => new List<Country>
         {
             new Country{ID = "AU", EnglishName="Australia", LocalizedName = "Australia"},
             new Country{ID = "NZ", EnglishName = "New Zealand", LocalizedName = "New Zealand"},
             new Country{ID = "FJ", EnglishName = "Fiji", LocalizedName = "Fiji"},                    
+        };
+
+        private List<Country> AfricaCountries => new List<Country>
+        {
+            new Country { ID="AO", EnglishName = "Angola", LocalizedName = "Angola"}
         };
 
         #endregion
@@ -39,6 +44,10 @@ namespace ArifWeather.Service.MockService
             if (regionCode == "OCN")
             {
                 countries = OceaniaCountries;
+            }
+            else if (regionCode == "AFR") //africa
+            {
+                countries = AfricaCountries;
             }
             return countries;
         }

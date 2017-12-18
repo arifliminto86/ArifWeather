@@ -73,7 +73,6 @@ namespace ArifWeather.Service.Service
                 throw new ArgumentException($@"Invalid locationKey : {locationKey}");
             }
             return weather.Data[0];
-        }
-        
+        }        
     }
 }

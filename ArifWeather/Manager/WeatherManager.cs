@@ -62,7 +62,7 @@ namespace ArifWeather.Manager
         /// <summary>
         /// Get location key of the city
         /// </summary>
-        /// <param name="city">city that we are looking for</param>
+        /// <param name="regionCode">the region code</param>
         /// <returns>list of location keys</returns>
         public List<Country> GetCountries(string regionCode)
         {

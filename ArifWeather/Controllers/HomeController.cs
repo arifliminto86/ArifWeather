@@ -8,6 +8,10 @@ namespace ArifWeather.Controllers
 {
     public class HomeController : BaseController
     {
+        /// <summary>
+        /// Default Ctor
+        /// </summary>
+        /// <param name="weatherManager">the weather manager</param>
         public HomeController(IWeatherManager weatherManager) : base(weatherManager)
         {
             WeatherManager = weatherManager;
@@ -35,6 +39,11 @@ namespace ArifWeather.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            return View();
+        }
+
+        public ActionResult ErrorPage()
+        {
             return View();
         }
         
