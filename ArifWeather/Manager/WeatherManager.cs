@@ -76,7 +76,7 @@ namespace ArifWeather.Manager
         /// <returns>the current weather condition</returns>
         public Weather GetCurrentConditions(string locationCode)
         {
-            var weather =  _weatherService.GetCurrentConditions();
+            var weather =  _weatherService.GetCurrentConditions(locationCode);
             return weather;
         }
     }

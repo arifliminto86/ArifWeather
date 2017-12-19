@@ -94,6 +94,6 @@
                 
         $("#WeatherIcon").attr("src", imgurl);
         
-        $("#Temperature").text(data.Temperature.Metric.Value);
+        $("#Temperature").text(data.Temperature.Metric.Value + " Celcius");
     }    
 }
